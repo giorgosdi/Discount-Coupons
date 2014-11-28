@@ -1,6 +1,12 @@
 @extends('layouts.default')
 
 @section('content')
+<div class="col-md-12">
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-4">
+  <div class="thumbnail">
 	<h1>Create your coupon !!</h1>
 	{{ Form::open() }}
 		<div>
@@ -37,6 +43,13 @@
 
 		<div>
 			{{ Form::submit('Create your coupon !') }}
-		</div>
+	</div>
+	</div>
 	{{ Form::close() }}
+	</div>
+  <div class="col-md-4">
+
+  </div>
+
+</div>
 @stop
