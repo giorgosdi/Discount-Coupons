@@ -2,6 +2,14 @@
 
 class UsersController extends \BaseController {
 
+
+	protected $user;
+
+	public function __construct(User $user)
+	{
+		$this->user = $user;
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -31,7 +39,19 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// SEE STORE FUNCTION FROM LEARNING LARAVEL FOR ADVANCED CODE
+		$user = new User;
+
+		$user->username = Input::get('username');
+		$user->password = Hash::make(Input::get('password'));
+		$user->first_name = Input::get('first_name');
+		$user->last_name = Input::get('last_name');
+		$user->email = Input::get('email');
+		$user->type = Input::get('type');
+
+		if($user->save()) return Redirect::home();
+
+		return Redirect::back()->withInput();
 	}
 
 

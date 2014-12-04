@@ -15,7 +15,7 @@
 	  <div class="col-md-4">
 	  	<div class='thumbnail'>
 	  	<h1>Sing in !</h1>
-			{{ Form::open(array('class'=>'form-horizontal', 'role'=>'form')) }}
+			{{ Form::open(array('route' => 'sessions.store', 'class'=>'form-horizontal', 'role'=>'form')) }}
 				<div class='form-group'>
 					{{ Form::label('username', 'Username', array('class'=>'col-sm-3 control-label')) }}
 					<div class='col-sm-9'>
