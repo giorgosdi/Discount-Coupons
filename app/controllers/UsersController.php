@@ -63,7 +63,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return View::make('users.profile');
 	}
 
 
@@ -75,7 +75,7 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+
 	}
 
 
