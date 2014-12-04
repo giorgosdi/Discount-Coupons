@@ -9,7 +9,7 @@
 	<div class="thumbnail">
 		<h1>Create a new User !</h1>
 
-		{{ Form::open() }}
+		{{ Form::open(array('route'=>'users.store')) }}
 			<div>
 				{{ Form::label('username', 'Username') }}
 				{{ Form::text('username') }}
@@ -17,7 +17,7 @@
 
 			<div>
 				{{ Form::label('password', 'Password') }}
-				{{ Form::text('password') }}
+				{{ Form::password('password') }}
 			</div>
 
 			<div>
