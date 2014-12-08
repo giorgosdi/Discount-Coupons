@@ -1,7 +1,7 @@
 <?php
 
-Route::get('login', 'SessionsController@create');
-Route::get('logout', 'SessionsController@destroy');
+Route::get('login', array('as' => 'login', 'uses' => 'SessionsController@create') );
+Route::get('logout', array('as' => 'logout', 'uses'=>'SessionsController@destroy') );
 
 Route::resource('sessions', 'SessionsController');
 Route::resource('coupons', 'CouponsController');
