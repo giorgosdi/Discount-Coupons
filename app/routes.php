@@ -12,4 +12,4 @@ Route::resource('coupons', 'CouponsController');
 Route::get('/', ['as'=>'home', function()
 {
 	return View::make('index');
-}])->before('auth');
+}]);
