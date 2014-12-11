@@ -8,7 +8,7 @@
 	    <div class="thumbnail">
 	      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
 	      <div class="caption">
-	        <h3>Pizza coupons</h3>
+	        <h3>Pizza coupons for you!</h3>
 	        <p>12$</p>
 	        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 	      </div>
