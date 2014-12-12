@@ -11,5 +11,6 @@ Route::resource('coupons', 'CouponsController');
 
 Route::get('/', ['as'=>'home', function()
 {
-	return View::make('index');
+	$data=Coupons::all();
+	return View::make('index')->with('data',$data);
 }]);

@@ -11,9 +11,15 @@ class CouponsTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			Coupon::create([
-
-			]);
+			Coupons::create(array(
+				'title' => $faker->word,
+				'description' => $faker->word,
+				'category' => $faker->word,
+				'expiration_date' => $faker->dateTime,
+				'price' => $faker->randomDigit,
+				'discount_percentage' => $faker->randomDigit,
+				'availability' => $faker->randomDigit
+			));
 		}
 	}
 
