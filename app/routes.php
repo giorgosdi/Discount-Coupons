@@ -11,6 +11,17 @@ Route::resource('coupons', 'CouponsController');
 
 Route::get('/', ['as'=>'home', function()
 {
-	$data=Coupons::all();
-	return View::make('index')->with('data',$data);
+	$total=Coupons::all()->count();
+	$col1 = ceil($total * 0.33);
+	$col2 = ceil(($total - $col1) * 0.5);
+	$col = $col1+$col2;	
+
+
+	$data = Coupons::all();
+	$data1 = Coupons::all()->take($col1);
+	$data2 = $data->slice($col1, $col2);
+	$data3 = $data->slice($col);
+
+
+	return View::make('index')->with('data1',$data1)->with('data2',$data2)->with('data3',$data3);
 }]);
