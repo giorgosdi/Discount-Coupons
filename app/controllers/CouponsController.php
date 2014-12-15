@@ -2,6 +2,14 @@
 
 class CouponsController extends \BaseController {
 
+
+
+	protected $coupon;
+
+	public function __construct(Coupon $coupon)
+	{
+		$this->coupon = $coupon;
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -31,7 +39,14 @@ class CouponsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+
+		if(!$this->coupon->fill($input)->isValid())
+			return Redirect::back()->withInput()->withErrors($this->coupon->errors);
+
+		$this->coupon->save();
+
+		return Redirect::home();
 	}
 
 

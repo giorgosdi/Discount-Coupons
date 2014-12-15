@@ -55,6 +55,9 @@
 			  <ul class="nav navbar-nav navbar-right">
 
 			  @if (Auth::check())
+			  	@if (Auth::user()->type == 1)
+			  		<li><a href="{{ URL::route('coupons.create') }}">Post a coupon</a></li>
+			  	@endif
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->username }} <span class="caret"></span></a>
 			      <ul class="dropdown-menu" role="menu">
