@@ -40,18 +40,25 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		// SEE STORE FUNCTION FROM LEARNING LARAVEL FOR ADVANCED CODE
-		$user = new User;
+		// $user = new User;
+		
+		// $user->username = Input::get('username');
+		// $user->password = Hash::make(Input::get('password'));
+		// $user->first_name = Input::get('first_name');
+		// $user->last_name = Input::get('last_name');
+		// $user->email = Input::get('email');
+		// $user->type = Input::get('type');
+		// if($user->save()) return Redirect::home();
 
-		$user->username = Input::get('username');
-		$user->password = Hash::make(Input::get('password'));
-		$user->first_name = Input::get('first_name');
-		$user->last_name = Input::get('last_name');
-		$user->email = Input::get('email');
-		$user->type = Input::get('type');
+		// return Redirect::back()->withInput();
+		$input = Input::all();
 
-		if($user->save()) return Redirect::home();
+		if(!$this->user->fill($input)->isValid())
+			return Redirect::back()->withInput()->withErrors($this->user->errors);
 
-		return Redirect::back()->withInput();
+		$this->user->save();
+
+		return Redirect::home();
 	}
 
 
