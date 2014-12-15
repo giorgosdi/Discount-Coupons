@@ -11,7 +11,11 @@
 			      <div class="caption">
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
-			        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			        @if (Auth::check())
+			        	@if (Auth::user()->type == 0)
+			        		<p><a href="#" class="btn btn-primary" role="button">Print coupon</a>
+			        	@endif
+			        @endif
 			      </div>
 			    </div>
 		    	@endforeach
@@ -27,7 +31,11 @@
 			      <div class="caption">
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
-			        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			        @if (Auth::check())
+			        	@if (Auth::user()->type == 0)
+			        		<p><a href="#" class="btn btn-primary" role="button">Print coupon</a>
+			        	@endif
+			        @endif
 			      </div>
 			    </div>
 		    	@endforeach
@@ -43,7 +51,11 @@
 			      <div class="caption">
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
-			        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			        @if (Auth::check())
+			        	@if (Auth::user()->type == 0)
+			        		<p><a href="#" class="btn btn-primary" role="button">Print coupon</a>
+			        	@endif
+			        @endif
 			      </div>
 			    </div>
 		    	@endforeach
