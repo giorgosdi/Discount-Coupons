@@ -8,6 +8,7 @@ Route::resource('sessions', 'SessionsController');
 Route::resource('users', 'UsersController');
 Route::resource('coupons', 'CouponsController');
 
+Route::get('users/profile', array('as'=>'profile', 'uses'=>'UsersController@show'));
 
 Route::get('/', ['as'=>'home', function()
 {

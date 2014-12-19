@@ -11,9 +11,10 @@
   	</thead>
 
   	<tbody>
+    
   		<tr>
   			<td>username</td>
-  			<td>giwrgos</td>
+  			<td>{{Auth::user()->username}}</td>
   		</tr>
   		<tr>
   			<td>password</td>
@@ -21,24 +22,25 @@
   		</tr>
   		<tr>
   			<td>First Name</td>
-  			<td>giwrgos</td>
+  			<td>{{ Auth::user()->first_name }}</td>
   		</tr>
   		<tr>
   			<td>Last Name</td>
-  			<td>giwrgos</td>
+  			<td>{{ Auth::user()->last_name }}</td>
   		</tr>
   		<tr>
   			<td>Email</td>
-  			<td>giwrgos</td>
+  			<td>{{ Auth::user()->email }}</td>
   		</tr>
   		<tr>
   			<td>Type</td>
-  			<td>giwrgos</td>
+  			<td>{{ Auth::user()->type }}</td>
   		</tr>
   		<tr>
   			<td>Avatar</td>
   			<td>giwrgos</td>
   		</tr>
+    
   	</tbody>
   </table>
 </div>
