@@ -61,7 +61,7 @@
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->username }} <span class="caret"></span></a>
 			      <ul class="dropdown-menu" role="menu">
-			        <li><a href="">Profile</a></li>
+			        <li><a href="{{ URL::route('profile') }}">Profile</a></li>
 			        <li><a href="{{ URL::route('logout') }}">Log out!</a></li>
 			        <li class="divider"></li>
 			            <li><a href="#">Separated link</a></li>

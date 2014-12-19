@@ -69,8 +69,12 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
+		if(!Auth::check())
+			return View::make('sessions.create');
+
+
 		return View::make('users.profile');
 	}
 
