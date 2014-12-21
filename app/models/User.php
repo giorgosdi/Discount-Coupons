@@ -25,7 +25,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'type'=>'required',
 	];
 
-
+	public function coupons()
+	{
+		return $this->belongsToMany('Coupon');
+	}
 	public $errors;
 	/**
 	 * The attributes excluded from the model's JSON form.
