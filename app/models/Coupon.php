@@ -1,7 +1,22 @@
 <?php
 
 class Coupon extends \Eloquent {
+
+	protected $table = 'coupons';
+	
 	protected $fillable = [ 'title', 'description', 'expiration_date', 'price', 'discount_percentage', 'availability'];
+
+	public function users()
+	{
+		return $this->belongsToMany('User');
+	}
+	
+	public function categories()
+	{
+		return $this->belongsToMany('Category');
+	}
+
+
 
 	public $errors;
 

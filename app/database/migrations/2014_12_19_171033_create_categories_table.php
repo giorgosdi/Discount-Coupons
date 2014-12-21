@@ -15,12 +15,9 @@ class CreateCategoriesTable extends Migration {
 		Schema::create('categories', function($category)
 		{
 			$category->increments('id');
-			$category->string('computers');
-			$category->string('sports');
-			$category->string('trips');
-			$category->string('health');
-			$category->string('optical');
-			$category->string('clothing');
+			$category->string('title');
+			
+			$category->timestamps();
 		});
 	}
 

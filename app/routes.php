@@ -7,8 +7,11 @@ Route::resource('sessions', 'SessionsController');
 // Route::resource('coupons', 'CouponsController');
 Route::resource('users', 'UsersController');
 Route::resource('coupons', 'CouponsController');
+Route::resource('categories', 'CategoriesController');
 
 Route::get('users/profile', array('as'=>'profile', 'uses'=>'UsersController@show'));
+Route::get('categories/cat', array('as'=>'cat', 'uses'=>'CategoriesController@show'));
+
 
 Route::get('/', ['as'=>'home', function()
 {
