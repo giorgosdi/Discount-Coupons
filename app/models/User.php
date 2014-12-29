@@ -51,5 +51,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return false;
 	}
+
+	public function convert_type($type)
+	{
+		if($type == 1)
+		{
+			return 'Professional';
+		}
+		return 'Customer';
+	}
 	
 }
