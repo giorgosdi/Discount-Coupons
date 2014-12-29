@@ -9,7 +9,7 @@
   			<th>Value</th>
   		</tr>
   	</thead>
-
+    {{$user= new User}}
   	<tbody>
     
   		<tr>
@@ -34,7 +34,7 @@
   		</tr>
   		<tr>
   			<td>Type</td>
-  			<td>{{ Auth::user()->type }}</td>
+  			<td>{{ $user->convert_type(Auth::user()->type) }}</td>
   		</tr>
   		<tr>
   			<td>Avatar</td>
