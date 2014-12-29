@@ -13,7 +13,7 @@
 			        <p>{{ $coupon->price }}$</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
-			        		<p><a href="#" class="btn btn-primary" role="button">Print coupon</a>
+			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>
 			        	@endif
 			        @endif
 			      </div>
@@ -33,7 +33,7 @@
 			        <p>{{ $coupon->price }}$</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
-			        		<p><a href="#" class="btn btn-primary" role="button">Print coupon</a>
+			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>
 			        	@endif
 			        @endif
 			      </div>
@@ -53,7 +53,7 @@
 			        <p>{{ $coupon->price }}$</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
-			        		<p><a href="#" class="btn btn-primary" role="button">Print coupon</a>
+			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>
 			        	@endif
 			        @endif
 			      </div>
