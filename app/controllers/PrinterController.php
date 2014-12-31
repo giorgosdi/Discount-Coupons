@@ -11,10 +11,13 @@ class PrinterController extends \BaseController {
 	public function index()
 	{
 		$id = Input::get('id');
+		$user_id = Input::get('user_id');
 		$coupon = Coupon::find($id);
 
 		$coupon->availability = $coupon->availability - 1;
 		$coupon->save();
+
+		$coupon->users()->attach($user_id);
 
 		$pdf = App::make('dompdf');
 		$pdf->loadHTML(
