@@ -39,12 +39,17 @@ class CouponsController extends \BaseController {
 	 */
 	public function store()
 	{
+		$user_id = Input::get('user_id');
 		$input = Input::all();
 
 		if(!$this->coupon->fill($input)->isValid())
 			return Redirect::back()->withInput()->withErrors($this->coupon->errors);
 
 		$this->coupon->save();
+
+		$coupon = $this->coupon;
+
+		$coupon->users()->attach($user_id);
 
 		return Redirect::home();
 	}

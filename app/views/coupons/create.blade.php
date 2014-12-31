@@ -52,7 +52,10 @@
 
 			{{ $errors->first('expiration_date') }}
 		</div>
-
+		<p>{{  }}</p>
+		<div>
+		{{ Form::hidden('user_id',Auth::user()->id) }}
+		</div>
 		<div>
 			{{ Form::submit('Create your coupon !') }}
 	</div>
@@ -60,7 +63,6 @@
 	{{ Form::close() }}
 	</div>
   <div class="col-md-4">
-
   </div>
 
 </div>
