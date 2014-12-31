@@ -13,6 +13,9 @@ class PrinterController extends \BaseController {
 		$id = Input::get('id');
 		$coupon = Coupon::find($id);
 
+		$coupon->availability = $coupon->availability - 1;
+		$coupon->save();
+
 		$pdf = App::make('dompdf');
 		$pdf->loadHTML(
 				'<div class="thumbnail">

@@ -6,16 +6,21 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 			 	@foreach($data1 as $coupon)
-			    <div class="thumbnail">
-			      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
-			      <div class="caption">
+			    <div class="<?= $coupon->availability == 0 ? '' : 'thumbnail' ?>">
+			      <div class="<?= $coupon->availability == 0 ? '' : 'caption' ?>">
+			      		
+			   	@if($coupon->availability == 0)
+			   	@else
+			      	{{ HTML::image('img/coupon.jpg', 'alt-text') }}
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
 			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>
 			        	@endif
 			        @endif
+			    @endif
 			      </div>
 			    </div>
 		    	@endforeach
@@ -26,16 +31,20 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 			 	@foreach($data2 as $coupon)
-			    <div class="thumbnail">
+			    <div class="<?= $coupon->availability == 0 ? '' : 'thumbnail' ?>">
+			      <div class="<?= $coupon->availability == 0 ? '' : 'caption' ?>">
+			   	@if($coupon->availability == 0)
+			   	@else
 			      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
-			      <div class="caption">
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
 			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>
 			        	@endif
 			        @endif
+			    @endif
 			      </div>
 			    </div>
 		    	@endforeach
@@ -46,16 +55,20 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 			 	@foreach($data3 as $coupon)
-			    <div class="thumbnail">
+			    <div class="<?= $coupon->availability == 0 ? '' : 'thumbnail' ?>">
+			      <div class="<?= $coupon->availability == 0 ? '' : 'caption' ?>">
+			   	@if($coupon->availability == 0)
+			   	@else
 			      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
-			      <div class="caption">
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
 			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>
 			        	@endif
 			        @endif
+			    @endif
 			      </div>
 			    </div>
 		    	@endforeach
