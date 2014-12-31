@@ -24,9 +24,9 @@ class Coupon extends \Eloquent {
 		'title'=>'required',
 		'description'=>'required',
 		'expiration_date'=>'required',
-		'price'=>'required',
-		'discount_percentage'=>'required',
-		'availability'=>'required'
+		'price'=>'required|integer',
+		'discount_percentage'=>'required|integer',
+		'availability'=>'required|integer'
 	];
 
 	public function isValid()
