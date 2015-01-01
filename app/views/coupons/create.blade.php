@@ -52,7 +52,7 @@
 
 			{{ $errors->first('expiration_date') }}
 		</div>
-		<p>{{  }}</p>
+		
 		<div>
 		{{ Form::hidden('user_id',Auth::user()->id) }}
 		</div>
