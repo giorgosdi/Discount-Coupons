@@ -31,6 +31,14 @@ class CouponsController extends \BaseController {
 		return View::make('coupons.about_to_expire');
 	}
 
+	public function search()
+	{
+		$search_query = Input::get('search_query');
+		
+		$results = Coupon::where('title', 'LIKE', '%$search_query%')->get();	
+		return View::make('coupons.search_results')->with('results',$results);
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
