@@ -21,6 +21,16 @@ class CouponsController extends \BaseController {
 	}
 
 
+	public function new_coupons()
+	{
+		return View::make('coupons.new_coupons');
+	}
+
+	public function about_to_expire()
+	{
+		return View::make('coupons.about_to_expire');
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
