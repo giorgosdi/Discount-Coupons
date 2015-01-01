@@ -34,8 +34,8 @@ class CouponsController extends \BaseController {
 	public function search()
 	{
 		$search_query = Input::get('search_query');
-		$results = Coupon::where('title', 'LIKE', '%'.$search_query.'%')->get();		
-		$total = Coupon::where('title', 'LIKE', '%'.$search_query.'%')->get()->count();	
+		$results = Coupon::where('title', 'LIKE', '%'.$search_query.'%')->orWhere('description', 'LIKE', '%'.$search_query.'%')->get();		
+		$total = Coupon::where('title', 'LIKE', '%'.$search_query.'%')->orWhere('description', 'LIKE', '%'.$search_query.'%')->get()->count();	
 
 		$col1 = ceil($total * 0.33);
 		$col2 = ceil(($total - $col1) * 0.5);
