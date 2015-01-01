@@ -34,9 +34,18 @@ class CouponsController extends \BaseController {
 	public function search()
 	{
 		$search_query = Input::get('search_query');
+		$results = Coupon::where('title', 'LIKE', '%'.$search_query.'%')->get();		
+		$total = Coupon::where('title', 'LIKE', '%'.$search_query.'%')->get()->count();	
+
+		$col1 = ceil($total * 0.33);
+		$col2 = ceil(($total - $col1) * 0.5);
+		$col = $col1+$col2;	
+
+		$data1 = $results->take($col1);
+		$data2 = $results->slice($col1, $col2);
+		$data3 = $results->slice($col);
 		
-		$results = Coupon::where('title', 'LIKE', '%$search_query%')->get();	
-		return View::make('coupons.search_results')->with('results',$results);
+		return View::make('coupons.search_results')->with('data1',$data1)->with('data2',$data2)->with('data3',$data3)->with('total',$total);
 	}
 
 	/**
