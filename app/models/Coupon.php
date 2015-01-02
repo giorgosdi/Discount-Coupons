@@ -16,17 +16,15 @@ class Coupon extends \Eloquent {
 		return $this->belongsToMany('Category');
 	}
 
-
-
 	public $errors;
-
+	// public $datetime = new DateTime;
 	public static $rules = [
 		'title'=>'required',
 		'description'=>'required',
 		'expiration_date'=>'required',
 		'price'=>'required|integer',
 		'discount_percentage'=>'required|integer',
-		'availability'=>'required|integer'
+		'availability'=>'required|integer|min:1'
 	];
 
 	public function isValid()

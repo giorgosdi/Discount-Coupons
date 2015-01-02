@@ -23,12 +23,18 @@ class CouponsController extends \BaseController {
 
 	public function new_coupons()
 	{
-		return View::make('coupons.new_coupons');
+		$today = new DateTime('today');
+		$coupons = Coupon::all();
+
+		$new_coupons = Coupon::where('created_at', '=', $today)->get();
+		return View::make('coupons.new_coupons')->with('new_coupons', $new_coupons);
 	}
 
 	public function about_to_expire()
 	{
-		return View::make('coupons.about_to_expire');
+		$today = new DateTime('today');
+		$coupons = Coupon::where('expiration_date', '=', $today)->get();
+		return View::make('coupons.about_to_expire')->with('coupons', $coupons);
 	}
 
 	public function search()
