@@ -52,6 +52,11 @@
 
 			{{ $errors->first('expiration_date') }}
 		</div>
+		<div>
+			{{ Form::label('category', 'Category') }}
+			
+			{{ Form::select('category', $selectCategories) }}
+		</div>
 		
 		<div>
 		{{ Form::hidden('user_id',Auth::user()->id) }}
