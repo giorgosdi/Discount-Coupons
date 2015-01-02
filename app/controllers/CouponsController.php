@@ -55,7 +55,14 @@ class CouponsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('coupons.create');
+		$categories = Category::all();
+		$selectCategories = array();
+		foreach($categories as $category)
+		{
+			$selectCategories[0] = '';
+			$selectCategories[$category->id] = $category->title;
+		}
+		return View::make('coupons.create')->with('selectCategories', $selectCategories);
 	}
 
 
@@ -67,6 +74,7 @@ class CouponsController extends \BaseController {
 	public function store()
 	{
 		$user_id = Input::get('user_id');
+		$category = Input::get('category');
 		$input = Input::all();
 
 		if(!$this->coupon->fill($input)->isValid())
@@ -76,6 +84,7 @@ class CouponsController extends \BaseController {
 
 		$coupon = $this->coupon;
 
+		$coupon->categories()->attach($category);
 		$coupon->users()->attach($user_id);
 
 		return Redirect::home();
