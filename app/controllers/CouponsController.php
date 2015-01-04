@@ -3,7 +3,6 @@
 class CouponsController extends \BaseController {
 
 
-
 	protected $coupon;
 
 	public function __construct(Coupon $coupon)
@@ -23,10 +22,13 @@ class CouponsController extends \BaseController {
 
 	public function new_coupons()
 	{
-		$today = new DateTime('today');
+		$date = array(
+		    Carbon::today(),
+		    Carbon::tomorrow()
+		);
 		$coupons = Coupon::all();
 
-		$new_coupons = Coupon::where('created_at', '=', $today)->get();
+		$new_coupons = Coupon::whereBetween('created_at', $date)->get();
 		return View::make('coupons.new_coupons')->with('new_coupons', $new_coupons);
 	}
 
