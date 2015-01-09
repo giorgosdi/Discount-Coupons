@@ -30,6 +30,9 @@ Route::get('/', ['as'=>'home', function()
 	$data2 = $data->slice($col1, $col2);
 	$data3 = $data->slice($col);
 
+	$yesterday = Carbon::yesterday();
+	$outdated = Coupon::where('expiration_date', '<', $yesterday)->orWhere('expiration_date', '=', $yesterday);
+	$outdated->delete();
 
 	return View::make('index')->with('data1',$data1)->with('data2',$data2)->with('data3',$data3);
 }]);
