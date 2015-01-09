@@ -26,17 +26,35 @@ class CouponsController extends \BaseController {
 		    Carbon::today(),
 		    Carbon::tomorrow()
 		);
-		$coupons = Coupon::all();
+		$total = Coupon::whereBetween('created_at', $date)->count();
+		$col1 = ceil($total * 0.33);
+		$col2 = ceil(($total - $col1) * 0.5);
+		$col = $col1+$col2;
 
-		$new_coupons = Coupon::whereBetween('created_at', $date)->get();
-		return View::make('coupons.new_coupons')->with('new_coupons', $new_coupons);
+
+		$data = Coupon::whereBetween('created_at', $date)->get();
+		$data1 = $data->take($col1);
+		$data2 = $data->slice($col1, $col2);
+		$data3 = $data->slice($col);
+
+		return View::make('coupons.new_coupons')->with('data1', $data1)->with('data2', $data2)->with('data3', $data3);
 	}
 
 	public function about_to_expire()
 	{
 		$today = new DateTime('today');
-		$coupons = Coupon::where('expiration_date', '=', $today)->get();
-		return View::make('coupons.about_to_expire')->with('coupons', $coupons);
+		$total = Coupon::where('expiration_date', '=', $today)->count();
+		$col1 = ceil($total * 0.33);
+		$col2 = ceil(($total - $col1) * 0.5);
+		$col = $col1+$col2;
+
+
+		$data = Coupon::where('expiration_date', '=', $today)->get();
+		$data1 = $data->take($col1);
+		$data2 = $data->slice($col1, $col2);
+		$data3 = $data->slice($col);
+		
+		return View::make('coupons.about_to_expire')->with('data1', $data1)->with('data2', $data2)->with('data3', $data3);
 	}
 
 	public function search()
