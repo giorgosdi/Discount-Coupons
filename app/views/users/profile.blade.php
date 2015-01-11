@@ -9,7 +9,7 @@
   			<th>Value</th>
   		</tr>
   	</thead>
-    {{$user= new User}}
+    <?php $user= new User ?>
   	<tbody>
     
   		<tr>
@@ -43,5 +43,36 @@
     
   	</tbody>
   </table>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading"><?= Auth::user()->type == 0 ? "Coupons printed by you !" : "Coupons posted by you !" ?></div>
+    <div class="panel-body">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            @foreach($data1 as $coupon)
+                <div class="thumbnail">
+                  {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+                    <h3>{{ $coupon->title }}</h3>
+                    <p>{{ $coupon->price }}$</p>  
+                </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            @foreach($data2 as $coupon)
+                <div class="thumbnail">
+                  {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+                    <h3>{{ $coupon->title }}</h3>
+                    <p>{{ $coupon->price }}$</p>  
+                </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+    </div> 
 </div>
 @stop

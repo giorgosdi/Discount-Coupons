@@ -74,8 +74,14 @@ class UsersController extends \BaseController {
 		if(!Auth::check())
 			return View::make('sessions.create');
 
+		$total = Auth::user()->coupons->count();
+		$col1 = ceil($total *0.5);
+		$col2 = ceil($total - $col1);
 
-		return View::make('users.profile');
+		$data = Auth::user()->coupons;
+		$data1 = $data->take($col1);
+		$data2 = $data->slice($col1, $col2);
+		return View::make('users.profile')->with('data1', $data1)->with('data2', $data2);
 	}
 
 
