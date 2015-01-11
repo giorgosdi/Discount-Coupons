@@ -24,20 +24,27 @@
 		</div>
 
 		<!-- No need for created field to be on the form -->
-
 		<div>
-			{{ Form::label('price', 'Initial Price') }}
-			{{ Form::text('price') }}
+			{{ Form::label('initial_price', 'Initial price') }}
+			{{ Form::text('initial_price') }}
 
-			{{ $errors->first('price') }}
+			{{ $errors->first('initial_price') }}
 		</div>
-
+		
 		<div>
 			{{ Form::label('discount_percentage', 'Discount Percentage') }}
 			{{ Form::text('discount_percentage') }}
 
 			{{ $errors->first('discount_percentage') }}
 		</div>
+
+		<div>
+			{{ Form::label('price', 'Discounted Price') }}
+			{{ Form::text('price') }}
+
+			{{ $errors->first('price') }}
+		</div>
+
 
 		<div>
 			{{ Form::label('availability', 'Number of coupons') }}

@@ -22,6 +22,7 @@ class Coupon extends \Eloquent {
 		'title'=>'required',
 		'description'=>'required',
 		'expiration_date'=>'required',
+		'initial_price'=>'required|integer',
 		'price'=>'required|integer',
 		'discount_percentage'=>'required|integer',
 		'availability'=>'required|integer|min:1'
