@@ -81,8 +81,14 @@
   <div class="panel panel-info">
     <div class="panel-heading">Saved money</div>
     <div class="panel-body">
-      <div>Initial money: </div>
+      <div>Initial money: {{$initial_money}}</div>
       <div>Money you spent: {{$money_spent}}</div>
+      <div>Money you saved so far: {{ $initial_money-$money_spent }}</div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="<?= $prog_bar ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $prog_bar ?>%">
+          {{ $prog_bar."%" }}
+        </div>
+      </div>
     </div>
   </div>
 @endif

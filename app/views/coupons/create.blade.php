@@ -40,7 +40,7 @@
 
 		<div>
 			{{ Form::label('price', 'Discounted Price') }}
-			{{ Form::text('price', null, ['disabled'=>'disabled']) }}
+			{{ Form::text('price') }}
 
 			{{ $errors->first('price') }}
 		</div>

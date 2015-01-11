@@ -4,7 +4,7 @@ class Coupon extends \Eloquent {
 
 	protected $table = 'coupons';
 	
-	protected $fillable = [ 'title', 'description', 'expiration_date', 'price', 'discount_percentage', 'availability'];
+	protected $fillable = [ 'title', 'description','category', 'expiration_date', 'initial_price', 'price', 'discount_percentage', 'availability'];
 
 	public function users()
 	{
@@ -22,8 +22,8 @@ class Coupon extends \Eloquent {
 		'title'=>'required',
 		'description'=>'required',
 		'expiration_date'=>'required',
-		'initial_price'=>'required|integer',
-		'price'=>'required|integer',
+		'initial_price'=>'required|numeric',
+		'price'=>'required|numeric',
 		'discount_percentage'=>'required|integer',
 		'availability'=>'required|integer|min:1'
 	];
