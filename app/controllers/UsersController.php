@@ -81,7 +81,9 @@ class UsersController extends \BaseController {
 		$data = Auth::user()->coupons;
 		$data1 = $data->take($col1);
 		$data2 = $data->slice($col1, $col2);
-		return View::make('users.profile')->with('data1', $data1)->with('data2', $data2);
+		
+		$money_spent = Auth::user()->coupons->sum('price');
+		return View::make('users.profile')->with('data1', $data1)->with('data2', $data2)->with('money_spent', $money_spent);
 	}
 
 

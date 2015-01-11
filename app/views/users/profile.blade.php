@@ -44,6 +44,7 @@
   	</tbody>
   </table>
 </div>
+<!-- table ends -->
 <div class="panel panel-primary">
     <div class="panel-heading"><?= Auth::user()->type == 0 ? "Coupons printed by you !" : "Coupons posted by you !" ?></div>
     <div class="panel-body">
@@ -75,4 +76,14 @@
       </div>
     </div> 
 </div>
+<!-- coupons details end -->
+@if(Auth::user()->type == 0)
+  <div class="panel panel-info">
+    <div class="panel-heading">Saved money</div>
+    <div class="panel-body">
+      <div>Initial money: </div>
+      <div>Money you spent: {{$money_spent}}</div>
+    </div>
+  </div>
+@endif
 @stop

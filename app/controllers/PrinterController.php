@@ -18,8 +18,6 @@ class PrinterController extends \BaseController {
 		$coupon->availability = $coupon->availability - 1;
 		$coupon->save();
 		$coupon->users()->attach($user_id);
-		if($coupon->availability == 0)
-			$coupon->delete();
 		
 
 		$pdf = App::make('dompdf');
