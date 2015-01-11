@@ -40,7 +40,7 @@
 
 		<div>
 			{{ Form::label('price', 'Discounted Price') }}
-			{{ Form::text('price') }}
+			{{ Form::text('price', null, ['disabled'=>'disabled']) }}
 
 			{{ $errors->first('price') }}
 		</div>
@@ -78,4 +78,16 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+// completes price textbox when onChange event is fired on discount_percentage text_box
+	$("#discount_percentage").change(function()
+	{
+		var initial_price = $("#initial_price").val();
+		var discount_percentage = $("#discount_percentage").val();
+		var sum = ( (initial_price * discount_percentage) / 100 );
+		var final_price = initial_price - sum;
+		$("#price").val(final_price);
+	});
+</script>
 @stop
