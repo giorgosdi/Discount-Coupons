@@ -24,20 +24,27 @@
 		</div>
 
 		<!-- No need for created field to be on the form -->
-
 		<div>
-			{{ Form::label('price', 'Initial Price') }}
-			{{ Form::text('price') }}
+			{{ Form::label('initial_price', 'Initial price') }}
+			{{ Form::text('initial_price') }}
 
-			{{ $errors->first('price') }}
+			{{ $errors->first('initial_price') }}
 		</div>
-
+		
 		<div>
 			{{ Form::label('discount_percentage', 'Discount Percentage') }}
 			{{ Form::text('discount_percentage') }}
 
 			{{ $errors->first('discount_percentage') }}
 		</div>
+
+		<div>
+			{{ Form::label('price', 'Discounted Price') }}
+			{{ Form::text('price') }}
+
+			{{ $errors->first('price') }}
+		</div>
+
 
 		<div>
 			{{ Form::label('availability', 'Number of coupons') }}
@@ -71,4 +78,16 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+// completes price textbox when onChange event is fired on discount_percentage text_box
+	$("#discount_percentage").change(function()
+	{
+		var initial_price = $("#initial_price").val();
+		var discount_percentage = $("#discount_percentage").val();
+		var sum = ( (initial_price * discount_percentage) / 100 );
+		var final_price = initial_price - sum;
+		$("#price").val(final_price);
+	});
+</script>
 @stop
