@@ -19,20 +19,16 @@ Route::get('search_results', array('as'=>'search_results', 'uses'=>'CouponsContr
 
 Route::get('/', ['as'=>'home', function()
 {
-	$total=Coupon::all()->count();
+	$total= Coupon::where('expiration_date', '<', $yesterday)->orWhere('expiration_date', '=', $yesterday)->count();
 	$col1 = ceil($total * 0.33);
 	$col2 = ceil(($total - $col1) * 0.5);
 	$col = $col1+$col2;	
 
 
-	$data = Coupon::all();
+	$data = Coupon::where('expiration_date', '<', $yesterday)->orWhere('expiration_date', '=', $yesterday);
 	$data1 = Coupon::all()->take($col1);
 	$data2 = $data->slice($col1, $col2);
 	$data3 = $data->slice($col);
-
-	$yesterday = Carbon::yesterday();
-	$outdated = Coupon::where('expiration_date', '<', $yesterday)->orWhere('expiration_date', '=', $yesterday);
-	$outdated->delete();
 
 	return View::make('index')->with('data1',$data1)->with('data2',$data2)->with('data3',$data3);
 }]);
