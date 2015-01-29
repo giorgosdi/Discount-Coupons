@@ -12,7 +12,7 @@
 			      		
 			   	@if($coupon->availability == 0)
 			   	@else
-			      	{{ HTML::image('img/coupon.jpg', 'alt-text') }}
+			      	{{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
 			        <p>{{ $coupon->availability }}</p>
@@ -36,7 +36,7 @@
 			      <div class="<?= $coupon->availability == 0 ? '' : 'caption' ?>">
 			   	@if($coupon->availability == 0)
 			   	@else
-			      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+			      {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
 			        <p>{{ $coupon->availability }}</p>
@@ -60,7 +60,7 @@
 			      <div class="<?= $coupon->availability == 0 ? '' : 'caption' ?>">
 			   	@if($coupon->availability == 0)
 			   	@else
-			      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+			      {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			        <h3>{{ $coupon->title }}</h3>
 			        <p>{{ $coupon->price }}$</p>
 			        <p>{{ $coupon->availability }}</p>

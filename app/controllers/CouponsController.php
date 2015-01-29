@@ -99,21 +99,49 @@ class CouponsController extends \BaseController {
 	 */
 	public function store()
 	{
+		$destinationPath='';
+		$filename='';
+	// 	$file = Input::file('image');
+	// 	$upload = $file->move($destinationPath, $filename);
+
 		$user_id = Input::get('user_id');
 		$category = Input::get('category');
 		$input = Input::all();
 
-		if(!$this->coupon->fill($input)->isValid())
-			return Redirect::back()->withInput()->withErrors($this->coupon->errors);
 
-		$this->coupon->save();
 
-		$coupon = $this->coupon;
+		$file = Input::file('image');
+		$destinationPath = public_path().'/img/';
+		$filename = str_random(3).'_'.$file->getClientOriginalName();
+		$file->move($destinationPath, $filename);
+		
+
+
+		$coup = new Coupon;
+
+		$coup->title = Input::get('title');
+		$coup->description = Input::get('description');
+		$coup->category = Input::get('category');
+		$coup->expiration_date = Input::get('expiration_date');
+		$coup->initial_price = Input::get('initial_price');
+		$coup->price = Input::get('price');
+		$coup->discount_percentage = Input::get('discount_percentage');
+		$coup->availability = Input::get('availability');
+		$coup->path = $filename;
+
+		// if(!$this->coupon->fill($input)->isValid())
+		// 	return Redirect::back()->withInput()->withErrors($this->coupon->errors);
+		if(!$coup->save())
+				return Redirect::back()->withInput()->withErrors($coup->errors);
+		// $this->coupon->save();
+
+		$coupon = $coup;
 
 		$coupon->categories()->attach($category);
 		$coupon->users()->attach($user_id);
 
 		return Redirect::home();
+
 	}
 
 

@@ -8,7 +8,7 @@
   <div class="col-md-4">
   <div class="thumbnail">
 	<h1>Create your coupon !!</h1>
-	{{ Form::open(array('route'=>'coupons.store')) }}
+	{{ Form::open(array('route'=>'coupons.store', 'files'=>true)) }}
 		<div>
 			{{ Form::label('title', 'Title') }}
 			{{ Form::text('title') }}
@@ -58,6 +58,10 @@
 			{{ Form::input('date', 'expiration_date') }}
 
 			{{ $errors->first('expiration_date') }}
+		</div>
+		<div>
+			{{ Form::label('image', 'Image') }}
+			{{ Form::file('image') }}
 		</div>
 		<div>
 			{{ Form::label('category', 'Category') }}
