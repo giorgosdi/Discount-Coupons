@@ -14,7 +14,7 @@ class AddRememberTokenToUsers extends Migration {
 	{
 		Schema::table('users', function($table)
 		{
-			$table->rememberToken()->after('avatar_path');
+			$table->rememberToken();
 		});
 	}
 

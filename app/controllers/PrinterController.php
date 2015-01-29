@@ -30,7 +30,7 @@ class PrinterController extends \BaseController {
 			        <p>'.$coupon->price.'$</p>
 			      </div>
 			    </div>'
-		);
+		)->setPaper('a6');
 		return $pdf->stream();
 	}
 
