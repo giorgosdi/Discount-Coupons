@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration {
 			$newtable->string('last_name');
 			$newtable->string('email')->unique();
 			$newtable->string('type');
-			$newtable->string('avatar_path');
 			$newtable->timestamps('');
 		});
 	}
