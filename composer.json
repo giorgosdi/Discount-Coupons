@@ -7,7 +7,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"barryvdh/laravel-dompdf": "0.4.*",
-		"nesbot/carbon": "*"
+		"nesbot/carbon": "*",
+		"frozennode/administrator": "dev-master"
 	},
 	"require-dev": {
 	    "way/generators": "~2.0",
