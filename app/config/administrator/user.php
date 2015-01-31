@@ -30,22 +30,42 @@ return array(
 
     'columns' => array(
       'username' => array(
-        'title' => 'username'
+        'title' => 'Username'
       ),
 
+      'first_name' => array(
+          'title' => 'First name'
+        ), 
+      'last_name' => array(
+          'title' => 'Last name'
+        ),
+
       'email' => array(
-        'title' => 'email'
+        'title' => 'Email'
       ),
+      'type' => array(
+          'title' => 'Type'
+        ),
     ),
 
     'edit_fields' => array(
       'username' => array(
-        'title' => 'username'
+        'title' => 'Username'
       ),
 
+      'first_name' => array(
+          'title' => 'First name'
+        ), 
+      'last_name' => array(
+          'title' => 'Last name'
+        ),
+
       'email' => array(
-        'title' => 'email'
+        'title' => 'Email'
       ),
+      'type' => array(
+          'title' => 'Type'
+        ),
     )
 
 )
