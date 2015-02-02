@@ -7,10 +7,12 @@
 			<div class="col-sm-12 col-md-12">
 			 	@foreach($data1 as $coupon)
 			    <div class="thumbnail">
-			      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+			      {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			      <div class="caption">
 			        <h3>{{ $coupon->title }}</h3>
-			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ round($coupon->price,2) }}€</p>
+			        <p>{{ $coupon->description }}</p>
+			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
 			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>
@@ -27,10 +29,12 @@
 			<div class="col-sm-12 col-md-12">
 			 	@foreach($data2 as $coupon)
 			    <div class="thumbnail">
-			      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+			      {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			      <div class="caption">
 			        <h3>{{ $coupon->title }}</h3>
-			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ round($coupon->price,2) }}€</p>
+			        <p>{{ $coupon->description }}</p>
+			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
 			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>
@@ -47,10 +51,12 @@
 			<div class="col-sm-12 col-md-12">
 			 	@foreach($data3 as $coupon)
 			    <div class="thumbnail">
-			      {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+			      {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			      <div class="caption">
 			        <h3>{{ $coupon->title }}</h3>
-			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ round($coupon->price,2) }}€</p>
+			        <p>{{ $coupon->description }}</p>
+			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
 			        		<p><a href="{{ URL::route('print', array('id'=>$coupon->id)) }}" class="btn btn-primary" role="button">Print coupon</a>

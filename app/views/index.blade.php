@@ -14,7 +14,8 @@
 			   	@else
 			      	{{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			        <h3>{{ $coupon->title }}</h3>
-			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ round($coupon->price,2) }}€</p>
+			        <p>{{ $coupon->description }}</p>
 			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
@@ -38,7 +39,8 @@
 			   	@else
 			      {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			        <h3>{{ $coupon->title }}</h3>
-			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ round($coupon->price,2) }}€</p>
+			        <p>{{ $coupon->description }}</p>
 			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
@@ -62,7 +64,8 @@
 			   	@else
 			      {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
 			        <h3>{{ $coupon->title }}</h3>
-			        <p>{{ $coupon->price }}$</p>
+			        <p>{{ round($coupon->price,2) }}€</p>
+			        <p>{{ $coupon->description }}</p>
 			        <p>{{ $coupon->availability }}</p>
 			        @if (Auth::check())
 			        	@if (Auth::user()->type == 0)
