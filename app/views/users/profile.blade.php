@@ -36,10 +36,6 @@
   			<td>Type</td>
   			<td>{{ $user->convert_type(Auth::user()->type) }}</td>
   		</tr>
-  		<tr>
-  			<td>Avatar</td>
-  			<td>giwrgos</td>
-  		</tr>
     
   	</tbody>
   </table>
@@ -53,9 +49,9 @@
           <div class="col-sm-12 col-md-12">
             @foreach($data1 as $coupon)
                 <div class="thumbnail">
-                  {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+                  {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
                     <h3>{{ $coupon->title }}</h3>
-                    <p>{{ $coupon->price }}$</p>  
+                    <p>{{ round($coupon->price,2) }} €</p>  
                 </div>
             @endforeach
           </div>
@@ -66,9 +62,9 @@
           <div class="col-sm-12 col-md-12">
             @foreach($data2 as $coupon)
                 <div class="thumbnail">
-                  {{ HTML::image('img/coupon.jpg', 'alt-text') }}
+                  {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
                     <h3>{{ $coupon->title }}</h3>
-                    <p>{{ $coupon->price }}$</p>  
+                    <p>{{ round($coupon->price,2) }} €</p>  
                 </div>
             @endforeach
           </div>
@@ -81,12 +77,12 @@
   <div class="panel panel-info">
     <div class="panel-heading">Saved money</div>
     <div class="panel-body">
-      <div>Initial money: {{$initial_money}}</div>
-      <div>Money you spent: {{$money_spent}}</div>
-      <div>Money you saved so far: {{ $initial_money-$money_spent }}</div>
+      <div>Initial money: {{round($initial_money,2)}} €</div>
+      <div>Money you spent: {{round($money_spent,2)}} €</div>
+      <div>Money you saved so far: {{ round($initial_money-$money_spent,2) }} €</div>
       <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="<?= $prog_bar ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $prog_bar ?>%">
-          {{ $prog_bar."%" }}
+          {{ round($prog_bar,2)."%" }}
         </div>
       </div>
     </div>
