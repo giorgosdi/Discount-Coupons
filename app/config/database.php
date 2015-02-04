@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '127.0.0.1',
-			'database'  => 'disc_coupons',
-			'username'  => 'root',
-			'password'  => '12345',
+			'host'      => 'eu-cdbr-west-01.cleardb.com',
+			'database'  => 'heroku_24f6299f2db333f',
+			'username'  => 'be217f906cb72c',
+			'password'  => '05214e54',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
