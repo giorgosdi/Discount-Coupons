@@ -43,7 +43,7 @@
 
 			<div>
 				{{ Form::label('type', 'Type') }}
-				{{ Form::select('type', array('Customer', 'Professional')) }}
+				{{ Form::select('type', array('Customer' => 'Customer', 'Professional' => 'Professional')) }}
 			</div>
 
 			<div>

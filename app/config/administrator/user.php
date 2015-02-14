@@ -62,7 +62,7 @@ return array(
 
       'email' => array(
         'title' => 'Email'
-      ),
+      ),     
       'type' => array(
           'title' => 'Type'
         ),

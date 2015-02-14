@@ -61,8 +61,14 @@ return array(
 	 */
 	'permission'=> function()
 	{
-		// return Auth::check();
-		return true;
+		if(Auth::user()->type == 'Admin')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	},
 
 	/**
@@ -71,7 +77,7 @@ return array(
 	 *
 	 * @type bool
 	 */
-	'use_dashboard' => true,
+	'use_dashboard' => false,
 
 	/**
 	 * If you want to create a dashboard view, provide the view string here.
