@@ -35,6 +35,7 @@
   		<tr>
   			<td>Type</td>
   			<td>{{ $user->convert_type(Auth::user()->type) }}</td>
+        <!-- change the above to Auth::user()->type -->
   		</tr>
     
   	</tbody>
