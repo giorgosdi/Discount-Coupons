@@ -51,14 +51,17 @@ class CategoriesController extends \BaseController {
 
 	public function show()
 	{
+		$yesterday = Carbon::yesterday();
+		$zero = 0;
+
 		$id = Input::get('id'); // we take the id sent from the default.blade.php in the categories dropdown
-		$total=Category::find($id)->coupons->count();
+		$total=Category::find($id)->coupons()->where('expiration_date', '>', $yesterday)->count();
 		$col1 = ceil($total * 0.33);
 		$col2 = ceil(($total - $col1) * 0.5);
 		$col = $col1+$col2;	
 
 		$data = Category::find($id)->coupons;
-		$data1 = Category::find($id)->coupons->take($col1);
+		$data1 = Category::find($id)->coupons()->where('expiration_date', '>', $yesterday)->where('availability', '>', $zero)->take($col1);
 		$data2 = $data->slice($col1, $col2);
 		$data3 = $data->slice($col);
 

@@ -19,7 +19,7 @@
 			    <span class="icon-bar"></span>
 			    <span class="icon-bar"></span>
 			  </button>
-			  <a class="navbar-brand" href="/">Brand</a>
+			  <a class="navbar-brand" href="/">{{ HTML::image('img/png/glyphicons-21-home.png', 'alt-text',array('class'=>'img-rounded')) }}</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,9 +27,9 @@
 			  <ul class="nav navbar-nav">
 			    <li class="<?= Request::url() == URL::route('new_coupons') ? 'active' : '' ?>"><a href="{{ URL::route('new_coupons') }}">New Coupons<span class="sr-only">(current)</span></a></li>
 			    <li class="<?= Request::url() == URL::route('about_to_expire') ? 'active' : '' ?>"><a href="{{ URL::route('about_to_expire') }}">About to expire</a></li>
-			    @if (Auth::check())
+			<!--     @if (Auth::check())
 
-			    @endif
+			    @endif -->
 
 
 
@@ -44,18 +44,21 @@
 			  </ul>
 			  <form action="{{ URL::route('search_results') }}" class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
-			      {{ Form::text('search_query') }}
+			    	<div class='col-sm-12'>
+			      	{{ Form::text('search_query', null, array('class'=>'form-control col-sm-offset-1 col-sm-12')) }}
+			      </div>
 			    </div>
-			    <button type="submit" class="btn btn-default">Submit</button>
+			    <button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-search"></span></button>
 			  </form>
 			  <ul class="nav navbar-nav navbar-right">
 
 			  @if (Auth::check())
 			  	@if (Auth::user()->type == 1)
-			  		<li><a href="{{ URL::route('coupons.create') }}">Post a coupon</a></li>
+			  	<!-- change the above to if(Auth::user()->type == 'Professional') -->
+			  		<li><a href="{{ URL::route('coupons.create') }}">Post a coupon <span class="glyphicon glyphicon-tags"></span></a></li>
 			  	@endif
 			    <li class="dropdown">
-			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->username }} <span class="caret"></span></a>
+			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->username }} <span class="caret"></span></a>
 			      <ul class="dropdown-menu" role="menu">
 			        <li><a href="{{ URL::route('profile') }}">Profile</a></li>
 			        <li><a href="{{ URL::route('logout') }}">Log out!</a></li>
@@ -74,5 +77,6 @@
 
 		@yield('content')
 </div>
+
 	</body>
 </html>
