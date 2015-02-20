@@ -151,9 +151,23 @@ class CouponsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
-		//
+		$id = Input::get('id');
+		$user_id = Input::get('user_id');
+		$cpn = Coupon::find($id);
+		$check_coupon = Coupon::find($id);
+
+		$cpn_hash = $string = str_random(10);
+
+    $cpn->hash = $cpn_hash;
+		$cpn->availability = $cpn->availability - 1;
+		$cpn->save();
+		$cpn->users()->attach($user_id);
+
+
+		return View::make('coupons.ready_to_print')->with('cpn',$cpn);
+
 	}
 
 
