@@ -12,6 +12,7 @@ Route::get('users/profile', array('as'=>'profile', 'uses'=>'UsersController@show
 Route::get('categories/cat', array('as'=>'cat', 'uses'=>'CategoriesController@show'));
 Route::get('print', array('as'=>'print', 'uses'=>'PrinterController@index'));
 Route::get('new_coupons', array('as'=>'new_coupons', 'uses'=>'CouponsController@new_coupons'));
+Route::get('ready_to_print', array('as'=>'ready_to_print', 'uses'=>'CouponsController@show'));
 Route::get('about_to_expire', array('as'=>'about_to_expire', 'uses'=>'CouponsController@about_to_expire'));
 Route::get('search_results', array('as'=>'search_results', 'uses'=>'CouponsController@search'));
 

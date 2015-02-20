@@ -59,7 +59,7 @@
 												     </div>
 											      </div>
 											      <div class="modal-footer">
-											        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Confirm</a>
+											        <a href="{{ URL::route('ready_to_print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Confirm</a>
 
 											      </div>
 											    </div>
@@ -134,7 +134,7 @@
 										        	</div>
 											      </div>
 											      <div class="modal-footer">
-											        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Confirm</a>
+											        <a href="{{ URL::route('ready_to_print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Confirm</a>
 											      </div>
 											    </div>
 											  </div>
@@ -209,7 +209,7 @@
 												     </div>
 											      </div>
 											      <div class="modal-footer">
-											        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Confirm</a>
+											        <a href="{{ URL::route('ready_to_print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Confirm</a>
 
 											      </div>
 											    </div>
