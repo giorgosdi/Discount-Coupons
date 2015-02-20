@@ -21,7 +21,9 @@
                   <h3 class="">{{ $cpn->title }}</h3>
                   <p class="">Price: {{ round($cpn->price,2) }}€</p>
                   <p class="">Description: {{ $cpn->description }}</p>
-                  <p class="">Quanity: {{ $cpn->availability }}</p>
+                  <p class="">Quanity: {{ $cpn->hash }}</p>
+                  <p>HASH: {{ $cpn->hash }}</p>
+                  <a href="{{ URL::route('print', array('id'=>$cpn->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Print</a>
                 </div>
               </div>  
             </div>

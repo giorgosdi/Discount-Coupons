@@ -157,12 +157,10 @@ class CouponsController extends \BaseController {
 		$user_id = Input::get('user_id');
 		$cpn = Coupon::find($id);
 		$check_coupon = Coupon::find($id);
-		$seed = 'abcdefghijklmnopqrstuvwxyz'
-                 .'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-                 .'0123456789!@#$%^&*()'; 
-    $shuffled_seed = shuffle($seed);
-    $cpn_hash = substr($shuffled_seed, 0, 5);
-    
+
+		$cpn_hash = $string = str_random(10);
+
+    $cpn->hash = $cpn_hash;
 		$cpn->availability = $cpn->availability - 1;
 		$cpn->save();
 		$cpn->users()->attach($user_id);
