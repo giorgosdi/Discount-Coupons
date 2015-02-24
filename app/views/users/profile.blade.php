@@ -53,6 +53,8 @@
                   {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
                     <h3>{{ $coupon->title }}</h3>
                     <p>{{ round($coupon->price,2) }} €</p>  
+                    <p>{{ $coupon->pivot->hash }}</p>
+                    <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}">Print</a>
                 </div>
             @endforeach
           </div>
@@ -66,6 +68,8 @@
                   {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
                     <h3>{{ $coupon->title }}</h3>
                     <p>{{ round($coupon->price,2) }} €</p>  
+                    <p>{{ $coupon->pivot->hash }}</p>
+                    <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}" class="btn btn-info">Print</a>
                 </div>
             @endforeach
           </div>

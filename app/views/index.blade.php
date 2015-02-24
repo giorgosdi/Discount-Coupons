@@ -16,14 +16,14 @@
 
 					   	<div class="row">
 					   		<div class="col-sm-6">
-					      	{{ HTML::image('img/'.$coupon->path, 'alt-text',array('class'=>'img-rounded')) }}
+					      	{{ HTML::image('img/'.$coupon->path, 'alt-text',array('class'=>'img-rounded', 'width' => 150, 'height' => 135)) }}
 					      </div>
 					      <div class="col-sm-6">
 					        <!-- <div class="row"> -->
 						        <!-- <div class="col-sm-9"> -->
 							        <h3 class="">{{ $coupon->title }}</h3>
 							        <p class="">Price: {{ round($coupon->price,2) }}€</p>
-							        <p class="">Description: {{ $coupon->description }}</p>
+							        <p class="descr">Description: {{ $coupon->description }}</p>
 						        <!-- </div> -->
 						        <!-- <div class="col-md-3"> -->
 						        	<p class="">Quanity: {{ $coupon->availability }}</p>
@@ -90,14 +90,14 @@
 
 					   	<div class="row">
 					   		<div class="col-sm-6">
-					      	{{ HTML::image('img/'.$coupon->path, 'alt-text',array('class'=>'img-rounded')) }}
+					      	{{ HTML::image('img/'.$coupon->path, 'alt-text',array('class'=>'img-rounded', 'width' => 150, 'height' => 135)) }}
 					      </div>
 					      <div class="col-sm-6">
 					        <!-- <div class="row"> -->
 						        <!-- <div class="col-sm-9"> -->
 							        <h3 class="">{{ $coupon->title }}</h3>
 							        <p class="">Price: {{ round($coupon->price,2) }}€</p>
-							        <p class="">Description: {{ $coupon->description }}</p>
+							        <p class="descr">Description: {{ $coupon->description }}</p>
 						        <!-- </div> -->
 						        <!-- <div class="col-md-3"> -->
 						        	<p class="">Quanity: {{ $coupon->availability }}</p>
@@ -165,14 +165,14 @@
 
 					   	<div class="row">
 					   		<div class="col-sm-6">
-					      	{{ HTML::image('img/'.$coupon->path, 'alt-text',array('class'=>'img-rounded')) }}
+					      	{{ HTML::image('img/'.$coupon->path, 'alt-text',array('class'=>'img-rounded', 'width' => 150, 'height' => 135)) }}
 					      </div>
 					      <div class="col-sm-6">
 					        <!-- <div class="row"> -->
 						        <!-- <div class="col-sm-9"> -->
 							        <h3 class="">{{ $coupon->title }}</h3>
 							        <p class="">Price: {{ round($coupon->price,2) }}€</p>
-							        <p class="">Description: {{ $coupon->description }}</p>
+							        <p class="descr">Description: {{ $coupon->description }}</p>
 						        <!-- </div> -->
 						        <!-- <div class="col-md-3"> -->
 						        	<p class="">Quanity: {{ $coupon->availability }}</p>

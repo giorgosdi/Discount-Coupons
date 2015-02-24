@@ -71,6 +71,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show()
 	{
+
 		if(!Auth::check())
 			return View::make('sessions.create');
 
@@ -78,12 +79,14 @@ class UsersController extends \BaseController {
 		$col1 = ceil($total *0.5);
 		$col2 = ceil($total - $col1);
 
-		$data = Auth::user()->coupons;
+		$data = Auth::user()->coupons->sortByDesc('updated_at');
+
 		$data1 = $data->take($col1);
 		$data2 = $data->slice($col1, $col2);
 		
 		$initial_money = Auth::user()->coupons->sum('initial_price');
 		$money_spent = Auth::user()->coupons->sum('price');
+
 		if($initial_money != 0)
 		{
 			$prog_bar = ($money_spent * 100) / $initial_money;
