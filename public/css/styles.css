@@ -1,0 +1,12 @@
+.thumbnail h3{
+  margin-top: 0;
+}
+
+.thumbnail p.descr{
+  max-height: 40px;
+  min-height: 40px;
+  overflow: hidden;
+}
+.thumbnail p.descr::after{
+  content:"...";
+}

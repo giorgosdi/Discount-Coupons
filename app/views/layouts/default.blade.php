@@ -4,6 +4,7 @@
 		<title>index</title>
 		{{ HTML::style('css/bootstrap.css') }}
 		{{ HTML::style('css/bootstrap-theme.css') }}
+		{{ HTML::style('css/styles.css') }}
 		{{ HTML::script('js/jquery-1.11.0.min.js') }}
 		{{ HTML::script('js/bootstrap.min.js') }}
 	</head>

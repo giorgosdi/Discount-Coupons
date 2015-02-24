@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddHashToCouponTable extends Migration {
+class AddHashToCouponUserTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddHashToCouponTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('coupons', function(Blueprint $table)
+		Schema::table('coupon_user', function(Blueprint $table)
 		{
-			$table->string('hash')->after('path');
+			$table->string('hash')->after('user_id');
 		});
 	}
 
@@ -25,7 +25,7 @@ class AddHashToCouponTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('coupons', function(Blueprint $table)
+		Schema::table('coupon_user', function(Blueprint $table)
 		{
 			$table->dropColumn('hash');
 		});

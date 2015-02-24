@@ -160,11 +160,11 @@ class CouponsController extends \BaseController {
 
 		$cpn_hash = $string = str_random(10);
 
-    $cpn->hash = $cpn_hash;
+
+
 		$cpn->availability = $cpn->availability - 1;
 		$cpn->save();
-		$cpn->users()->attach($user_id);
-
+		$cpn->users()->attach($user_id, ['hash' => $cpn_hash]);
 
 		return View::make('coupons.ready_to_print')->with('cpn',$cpn);
 

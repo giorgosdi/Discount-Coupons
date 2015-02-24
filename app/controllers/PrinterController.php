@@ -13,11 +13,8 @@ class PrinterController extends \BaseController {
 		$id = Input::get('id');
 		$user_id = Input::get('user_id');
 		$coupon = Coupon::find($id);
-		$check_coupon = Coupon::find($id);
+		$hash = Input::get('hash');
 
-		$coupon->availability = $coupon->availability - 1;
-		$coupon->save();
-		$coupon->users()->attach($user_id);
 		
 
 		$pdf = App::make('dompdf');
@@ -28,6 +25,7 @@ class PrinterController extends \BaseController {
 			        <h3>'.$coupon->title.'</h3>
 			        <p>'.$coupon->description.'</p>
 			        <p>'.$coupon->price.'$</p>
+			        <p>'.$hash.'</p>
 			      </div>
 			    </div>'
 		)->setPaper('a6');
