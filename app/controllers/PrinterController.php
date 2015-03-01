@@ -20,14 +20,14 @@ class PrinterController extends \BaseController {
 		$pdf = App::make('dompdf');
 		$pdf->loadHTML(
 				'<div class="thumbnail">
-			      <img src="img/coupon.jpg">
+						<img src="img/'.$coupon->path.'" class="img-rounded" alt="'.$coupon->title.'" width=150 height=135 >
 			      <div class="caption">
-			        <h3>'.$coupon->title.'</h3>
-			        <p>'.$coupon->description.'</p>
-			        <p>'.$coupon->price.'$</p>
-			        <p>'.$hash.'</p>
+			        <p><strong>Title:</strong> '.$coupon->title.'</p>
+			        <p><strong>Description:</strong> '.$coupon->description.'</p>
+			        <p><strong>Price:</strong> '.round($coupon->price,2).' €</p>
+			        <p><strong>Unique hash:</strong> '.$hash.'</p>
 			      </div>
-			    </div>'
+			  </div>'
 		)->setPaper('a6');
 		return $pdf->stream();
 	}

@@ -23,16 +23,16 @@ Route::get('/', ['as'=>'home', function()
 	$yesterday = Carbon::yesterday();
 	$zero = 0;
 
-	$total= Coupon::where('availability', '>', $zero)->where('expiration_date', '>', $yesterday)->count();
-	$col1 = ceil($total * 0.33);
-	$col2 = ceil(($total - $col1) * 0.5);
-	$col = $col1+$col2;	
+	// $total= Coupon::where('availability', '>', $zero)->where('expiration_date', '>', $yesterday)->count();
+	// $col1 = ceil($total * 0.33);
+	// $col2 = ceil(($total - $col1) * 0.5);
+	// $col = $col1+$col2;	
 
 
-	$data = Coupon::where('availability', '>', $zero)->where('expiration_date', '>', $yesterday)->get();
-	$data1 = $data->take($col1);
-	$data2 = $data->slice($col1, $col2);
-	$data3 = $data->slice($col);
+	$data = Coupon::where('availability', '>', $zero)->where('expiration_date', '>', $yesterday)->paginate(1);
+	// $data1 = $data->take($col1);
+	// $data2 = $data->slice($col1, $col2);
+	// $data3 = $data->slice($col);
 
-	return View::make('index')->with('data1',$data1)->with('data2',$data2)->with('data3',$data3);
+	return View::make('index')->with('data',$data);
 }]);

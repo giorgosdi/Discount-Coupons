@@ -26,52 +26,44 @@ class CouponsController extends \BaseController {
 		    Carbon::today(),
 		    Carbon::tomorrow()
 		);
-		$total = Coupon::whereBetween('created_at', $date)->count();
-		$col1 = ceil($total * 0.33);
-		$col2 = ceil(($total - $col1) * 0.5);
-		$col = $col1+$col2;
 
 
-		$data = Coupon::whereBetween('created_at', $date)->get();
-		$data1 = $data->take($col1);
-		$data2 = $data->slice($col1, $col2);
-		$data3 = $data->slice($col);
 
-		return View::make('coupons.new_coupons')->with('data1', $data1)->with('data2', $data2)->with('data3', $data3);
+		$data = Coupon::whereBetween('created_at', $date)->paginate(1);
+
+
+		return View::make('coupons.new_coupons')->with('data', $data);
 	}
 
 	public function about_to_expire()
 	{
 		$today = new DateTime('today');
-		$total = Coupon::where('expiration_date', '=', $today)->count();
-		$col1 = ceil($total * 0.33);
-		$col2 = ceil(($total - $col1) * 0.5);
-		$col = $col1+$col2;
+		$zero = 0;
 
+		$data = Coupon::where('expiration_date', '=', $today)->where('availability', '>', $zero)->paginate(1);
 
-		$data = Coupon::where('expiration_date', '=', $today)->get();
-		$data1 = $data->take($col1);
-		$data2 = $data->slice($col1, $col2);
-		$data3 = $data->slice($col);
-		
-		return View::make('coupons.about_to_expire')->with('data1', $data1)->with('data2', $data2)->with('data3', $data3);
+		return View::make('coupons.about_to_expire')->with('data', $data);
 	}
 
 	public function search()
 	{
-		$search_query = Input::get('search_query');
-		$results = Coupon::where('title', 'LIKE', '%'.$search_query.'%')->orWhere('description', 'LIKE', '%'.$search_query.'%')->get();		
-		$total = Coupon::where('title', 'LIKE', '%'.$search_query.'%')->orWhere('description', 'LIKE', '%'.$search_query.'%')->get()->count();	
 
-		$col1 = ceil($total * 0.33);
-		$col2 = ceil(($total - $col1) * 0.5);
-		$col = $col1+$col2;	
+		$yesterday = Carbon::yesterday();
+		$zero = 0;
 
-		$data1 = $results->take($col1);
-		$data2 = $results->slice($col1, $col2);
-		$data3 = $results->slice($col);
+		$search_query = Input::get('search_query',null);
+
+
+
+
+		$data = Coupon::where('expiration_date', '>', $yesterday)->where('availability', '>', $zero)->where(function($query) use ($search_query){
+			$query->where('title', 'LIKE', '%'.$search_query.'%')->orWhere('description', 'LIKE', '%'.$search_query.'%');
+		})
+		->paginate(10);
+		$pagination = $data->appends(array('search_query' => $search_query));
 		
-		return View::make('coupons.search_results')->with('data1',$data1)->with('data2',$data2)->with('data3',$data3)->with('total',$total);
+		return View::make('coupons.search_results')->with('data',$data)->with('pagination', $pagination);
+	
 	}
 
 	/**
@@ -138,7 +130,7 @@ class CouponsController extends \BaseController {
 		$coupon = $coup;
 
 		$coupon->categories()->attach($category);
-		$coupon->users()->attach($user_id);
+		$coupon->users()->attach($user_id, ['hash' => 'abc']);
 
 		return Redirect::home();
 
@@ -156,17 +148,18 @@ class CouponsController extends \BaseController {
 		$id = Input::get('id');
 		$user_id = Input::get('user_id');
 		$cpn = Coupon::find($id);
-		$check_coupon = Coupon::find($id);
-
-		$cpn_hash = $string = str_random(10);
-
 
 
 		$cpn->availability = $cpn->availability - 1;
 		$cpn->save();
+
+		$cpn_hash = $string = str_random(10);
+
 		$cpn->users()->attach($user_id, ['hash' => $cpn_hash]);
 
-		return View::make('coupons.ready_to_print')->with('cpn',$cpn);
+
+
+		return View::make('coupons.ready_to_print')->with('cpn',$cpn)->with('cpn_hash', $cpn_hash);
 
 	}
 
