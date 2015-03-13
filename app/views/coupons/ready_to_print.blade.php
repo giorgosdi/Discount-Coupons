@@ -15,13 +15,14 @@
 
               <div class="row">
                 <div class="col-sm-6">
-                  {{ HTML::image('img/'.$cpn->path, 'alt-text',array('class'=>'img-rounded')) }}
+                  {{ HTML::image('img/'.$cpn->path, $cpn->title,array('class'=>'img-rounded', 'width' => 150, 'height' => 135)) }}
                 </div>
                 <div class="col-sm-6">
                   <h3 class="">{{ $cpn->title }}</h3>
                   <p class="">Price: {{ round($cpn->price,2) }}€</p>
                   <p class="">Description: {{ $cpn->description }}</p>
-                  <a href="{{ URL::route('print', array('id'=>$cpn->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Print</a>
+                  <p>hash: {{ $cpn_hash }}</p>
+                  <a href="{{ URL::route('print', array('id'=>$cpn->id, 'user_id' => Auth::user()->id, 'hash' => $cpn_hash )) }}" class="btn btn-info">Print</a>
                 </div>
               </div>  
             </div>

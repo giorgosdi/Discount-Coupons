@@ -7,6 +7,8 @@
   		<tr>
   			<th>Info</th>
   			<th>Value</th>
+        <th><a href="{{ URL::route('edit_data') }}">Edit</a></th>
+        <th><a href="{{ URL::route('change_pass') }}">Change password</a></th>
   		</tr>
   	</thead>
     <?php $user= new User ?>
@@ -18,7 +20,7 @@
   		</tr>
   		<tr>
   			<td>password</td>
-  			<td>giwrgos</td>
+  			<td>{{Auth::user()->password}}</td>
   		</tr>
   		<tr>
   			<td>First Name</td>
@@ -34,7 +36,7 @@
   		</tr>
   		<tr>
   			<td>Type</td>
-  			<td>{{ $user->convert_type(Auth::user()->type) }}</td>
+  			<td>{{ Auth::user()->type }}</td>
         <!-- change the above to Auth::user()->type -->
   		</tr>
     
@@ -50,11 +52,16 @@
           <div class="col-sm-12 col-md-12">
             @foreach($data1 as $coupon)
                 <div class="thumbnail">
-                  {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
+                  {{ HTML::image('img/'.$coupon->path, $coupon->title,array('class'=>'img-rounded', 'width' => 150, 'height' => 135)) }}
                     <h3>{{ $coupon->title }}</h3>
                     <p>{{ round($coupon->price,2) }} €</p>  
-                    <p>{{ $coupon->pivot->hash }}</p>
-                    <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}">Print</a>
+                    @if(Auth::check())
+                      @if(Auth::user()->type == 'Customer')
+                        <p>{{ $coupon->pivot->hash }}</p>
+
+                        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}" class="btn btn-info">Print</a>
+                      @endif
+                    @endif
                 </div>
             @endforeach
           </div>
@@ -65,11 +72,16 @@
           <div class="col-sm-12 col-md-12">
             @foreach($data2 as $coupon)
                 <div class="thumbnail">
-                  {{ HTML::image('img/'.$coupon->path, 'alt-text') }}
+                  {{ HTML::image('img/'.$coupon->path, $coupon->title,array('class'=>'img-rounded', 'width' => 150, 'height' => 135)) }}
                     <h3>{{ $coupon->title }}</h3>
                     <p>{{ round($coupon->price,2) }} €</p>  
-                    <p>{{ $coupon->pivot->hash }}</p>
-                    <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}" class="btn btn-info">Print</a>
+                    @if(Auth::check())
+                      @if(Auth::user()->type == 'Customer')
+                        <p>{{ $coupon->pivot->hash }}</p>
+
+                        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}" class="btn btn-info">Print</a>
+                      @endif
+                    @endif
                 </div>
             @endforeach
           </div>

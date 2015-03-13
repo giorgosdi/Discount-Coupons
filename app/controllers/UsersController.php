@@ -103,24 +103,45 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
 	{
-
+		return View::make('users.edit_data');
 	}
 
-
+	public function change_pass()
+	{
+		return View::make('users.change_pass');
+	}
 	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+
+	public function update()
 	{
-		//
+
+			Auth::user()->username = Input::get('username');
+			Auth::user()->first_name = Input::get('first_name');
+			Auth::user()->last_name = Input::get('last_name');
+			Auth::user()->email = Input::get('email');
+
+			Auth::user()->save();
+			return Redirect::home();
 	}
 
+	public function update_pass()
+	{
+			if( Hash::check(Input::get('old_password'), Auth::user()->password) )
+			{
+				Auth::user()->password = Hash::make(Input::get('new_password'));
 
+				Auth::user()->save();
+
+				return Redirect::home();
+			}
+	}
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -131,6 +152,5 @@ class UsersController extends \BaseController {
 	{
 		//
 	}
-
 
 }

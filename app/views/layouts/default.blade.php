@@ -8,7 +8,7 @@
 		{{ HTML::script('js/jquery-1.11.0.min.js') }}
 		{{ HTML::script('js/bootstrap.min.js') }}
 	</head>
-	<body style='background-image:url("/img/background.jpg");'>
+	<body style='background-image:url("/img/cork_board.jpeg");'>
 	<div class='container'>
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
@@ -54,7 +54,7 @@
 			  <ul class="nav navbar-nav navbar-right">
 
 			  @if (Auth::check())
-			  	@if (Auth::user()->type == 1)
+			  	@if (Auth::user()->type == 'Professional')
 			  	<!-- change the above to if(Auth::user()->type == 'Professional') -->
 			  		<li><a href="{{ URL::route('coupons.create') }}">Post a coupon <span class="glyphicon glyphicon-tags"></span></a></li>
 			  	@endif
@@ -63,8 +63,6 @@
 			      <ul class="dropdown-menu" role="menu">
 			        <li><a href="{{ URL::route('profile') }}">Profile</a></li>
 			        <li><a href="{{ URL::route('logout') }}">Log out!</a></li>
-			        <li class="divider"></li>
-			            <li><a href="#">Separated link</a></li>
 			          </ul>
 			        </li>
 			      </ul>
