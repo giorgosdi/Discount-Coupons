@@ -8,7 +8,7 @@
 		{{ HTML::script('js/jquery-1.11.0.min.js') }}
 		{{ HTML::script('js/bootstrap.min.js') }}
 	</head>
-	<body style='background-image:url("/img/background.jpg");'>
+	<body style='background-image:url("/img/cork_board.jpeg");'>
 	<div class='container'>
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
