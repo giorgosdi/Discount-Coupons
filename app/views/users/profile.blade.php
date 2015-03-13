@@ -7,7 +7,8 @@
   		<tr>
   			<th>Info</th>
   			<th>Value</th>
-        <th><a href="">Edit</a></th>
+        <th><a href="{{ URL::route('edit_data') }}">Edit</a></th>
+        <th><a href="{{ URL::route('change_pass') }}">Change password</a></th>
   		</tr>
   	</thead>
     <?php $user= new User ?>
@@ -58,7 +59,7 @@
                       @if(Auth::user()->type == 'Customer')
                         <p>{{ $coupon->pivot->hash }}</p>
 
-                        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}">Print</a>
+                        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}" class="btn btn-info">Print</a>
                       @endif
                     @endif
                 </div>
@@ -78,7 +79,7 @@
                       @if(Auth::user()->type == 'Customer')
                         <p>{{ $coupon->pivot->hash }}</p>
 
-                        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}">Print</a>
+                        <a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id, 'hash' => $coupon->pivot->hash )) }}" class="btn btn-info">Print</a>
                       @endif
                     @endif
                 </div>
