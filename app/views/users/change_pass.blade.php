@@ -12,7 +12,7 @@
       <div class='form-group'>
         <!-- {{ Form::label('password', 'Password') }} -->
         <div class='col-sm-9'>
-          {{ Form::password('old_password', array('class'=>'form-control text-center col-sm-offset-2 col-sm-9', 'placeholder'=> Auth::user()->password)) }}
+          {{ Form::password('old_password', array('class'=>'form-control text-center col-sm-offset-2 col-sm-9', 'placeholder'=>'Type your old password..')) }}
         </div>
 
       </div>
@@ -20,21 +20,18 @@
       <div class='form-group'>
         <!-- {{ Form::label('password', 'Password') }} -->
         <div class='col-sm-9'>
-          {{ Form::password('new_password', array('class'=>'form-control text-center col-sm-offset-2 col-sm-9', 'placeholder'=> 'Type your new password')) }}
+          {{ Form::password('new_password', array('class'=>'form-control text-center col-sm-offset-2 col-sm-9', 'placeholder'=>'Type your new password..')) }}
         </div>
 
       </div>
+
+      {{Form::hidden('id', Auth::user()->id)}}
 
       <div class="form-group">
         <div class='col-sm-offset-3 col-sm-11'>
           {{ Form::submit('Change password', array('class'=>'btn btn-default col-md-6'))  }}
         </div>
       </div>    
-
-
-
-
-
 
     {{ Form::close() }}
 

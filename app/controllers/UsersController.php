@@ -123,23 +123,25 @@ class UsersController extends \BaseController {
 
 	public function update()
 	{
+		$user = User::find(Input::get('id'));
+		$user->username = Input::get('username');
+		$user->first_name = Input::get('first_name');
+		$user->last_name = Input::get('last_name');
+		$user->email = Input::get('email');
 
-			Auth::user()->username = Input::get('username');
-			Auth::user()->first_name = Input::get('first_name');
-			Auth::user()->last_name = Input::get('last_name');
-			Auth::user()->email = Input::get('email');
-
-			Auth::user()->save();
-			return Redirect::home();
+		$user->save();
+		return Redirect::home();
 	}
 
 	public function update_pass()
 	{
-			if( Hash::check(Input::get('old_password'), Auth::user()->password) )
+			$user = User::find(Input::get('id'));
+			if( Hash::check(Input::get('old_password'), $user->password) )
 			{
-				Auth::user()->password = Hash::make(Input::get('new_password'));
 
-				Auth::user()->save();
+				$user->password = Hash::make(Input::get('new_password'));
+
+				$user->save();
 
 				return Redirect::home();
 			}

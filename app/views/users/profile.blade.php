@@ -7,7 +7,7 @@
   		<tr>
   			<th>Info</th>
   			<th>Value</th>
-        <th><a href="{{ URL::route('edit_data') }}">Edit</a></th>
+        <th><a href="{{ URL::route('edit_data', array('id' => Auth::user()->id)) }}">Edit</a></th>
         <th><a href="{{ URL::route('change_pass') }}">Change password</a></th>
   		</tr>
   	</thead>
