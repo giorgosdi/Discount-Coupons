@@ -1,6 +1,12 @@
 @extends('layouts.default')
 
 @section('content')
+@if(Session::has('message'))
+<div class="alert {{ Session::get('alert-class', 'alert-info') }}">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+{{ Session::get('message') }}
+</div>
+@endif
 {{$data->links()}}
 	@foreach(array_chunk($data->getCollection()->all(), 3) as $row)
 	<div class="row">

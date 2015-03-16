@@ -92,7 +92,9 @@ class UsersController extends \BaseController {
 			$prog_bar = ($money_spent * 100) / $initial_money;
 			return View::make('users.profile')->with('data1', $data1)->with('data2', $data2)->with('money_spent', $money_spent)->with('initial_money', $initial_money)->with('prog_bar', $prog_bar);
 		}
-		return View::make('users.profile')->with('data1', $data1)->with('data2', $data2)->with('money_spent', $money_spent);
+		$prog_bar = 0;
+		return View::make('users.profile')->with('data1', $data1)->with('data2', $data2)->with('money_spent', $money_spent)->with('initial_money', $initial_money)->with('prog_bar', $prog_bar);
+
 
 	}
 

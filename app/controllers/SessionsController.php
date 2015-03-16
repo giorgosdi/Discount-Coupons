@@ -39,8 +39,11 @@ class SessionsController extends \BaseController {
 			'password'=>$input['password']
 		]);
 
-		if($attempt) return Redirect::intended('/');
-		
+		if($attempt){
+			Session::flash('message', 'You have successfully logged in !'); 
+			Session::flash('alert-class', 'alert-success'); 
+			return Redirect::intended('/');
+		}
 		return Redirect::back()->withInput();
 	}
 
@@ -90,6 +93,8 @@ class SessionsController extends \BaseController {
 	public function destroy()
 	{
 		Auth::logout();
+		Session::flash('message', 'See you soon !'); 
+		Session::flash('alert-class', 'alert-info'); 
 
 		return Redirect::home();
 	}
