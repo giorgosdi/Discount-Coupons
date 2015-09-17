@@ -79,7 +79,7 @@
 		<div class='form-group'>
 			<!-- {{ Form::label('category', 'Category', array('class'=>'col-sm-3 control-label')) }} -->
 			<div class='col-sm-9'>
-			{{ Form::select('category', $selectCategories, null, array('class'=>'form-control col-sm-offset-2 col-sm-9', 'placeholder'=>'Category')) }}
+			{{ Form::select('category', $selectCategories, 1, array('class'=>'form-control col-sm-offset-2 col-sm-9', 'placeholder'=>'Category')) }}
 			</div>
 		</div>
 		

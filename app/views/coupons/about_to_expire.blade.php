@@ -32,7 +32,7 @@
 				    </div>
 		        <div class="col-sm-12">
 			        @if (Auth::check())
-			        	@if (Auth::user()->type == 0)
+			        	@if (Auth::user()->type == 'Customer')
 			        		<!-- <p><a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-default" role="button">Print coupon {{ HTML::image('img/png/glyphicons-209-cart-out.png', 'alt-text',array('class'=>'img-rounded')) }}</a></p> -->
 			        		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<?= $coupon->id ?>">Buy Coupon  {{ HTML::image('img/png/glyphicons-209-cart-out.png', 'alt-text',array('class'=>'img-rounded')) }}</button>
 

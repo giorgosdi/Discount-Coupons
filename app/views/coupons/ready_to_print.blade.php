@@ -22,7 +22,7 @@
                   <p class="">Price: {{ round($cpn->price,2) }}€</p>
                   <p class="">Description: {{ $cpn->description }}</p>
                   <p>hash: {{ $cpn_hash }}</p>
-                  <a href="{{ URL::route('print', array('id'=>$cpn->id, 'user_id' => Auth::user()->id, 'hash' => $cpn_hash )) }}" class="btn btn-info">Print</a>
+                  <a href="{{ URL::route('print', array('id'=>$cpn->id,  'hash' => $cpn_hash )) }}" class="btn btn-info">Print</a>
                 </div>
               </div>  
             </div>

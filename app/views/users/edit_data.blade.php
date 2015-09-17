@@ -40,6 +40,9 @@
         {{ $errors->first('email') }}
       </div>
 
+      {{ Form::hidden('id', Auth::user()->id) }}
+
+
 
       <div class="form-group">
         <div class='col-sm-offset-3 col-sm-11'>

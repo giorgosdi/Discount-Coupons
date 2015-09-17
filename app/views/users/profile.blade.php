@@ -7,7 +7,7 @@
   		<tr>
   			<th>Info</th>
   			<th>Value</th>
-        <th><a href="{{ URL::route('edit_data') }}">Edit</a></th>
+        <th><a href="{{ URL::route('edit_data', array('id' => Auth::user()->id)) }}">Edit</a></th>
         <th><a href="{{ URL::route('change_pass') }}">Change password</a></th>
   		</tr>
   	</thead>
@@ -17,10 +17,6 @@
   		<tr>
   			<td>username</td>
   			<td>{{Auth::user()->username}}</td>
-  		</tr>
-  		<tr>
-  			<td>password</td>
-  			<td>{{Auth::user()->password}}</td>
   		</tr>
   		<tr>
   			<td>First Name</td>
@@ -90,7 +86,7 @@
     </div> 
 </div>
 <!-- coupons details end -->
-@if(Auth::user()->type == 0)
+@if(Auth::user()->type == 'Customer')
   <div class="panel panel-info">
     <div class="panel-heading">Saved money</div>
     <div class="panel-body">

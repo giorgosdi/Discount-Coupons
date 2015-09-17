@@ -28,12 +28,7 @@
 			  <ul class="nav navbar-nav">
 			    <li class="<?= Request::url() == URL::route('new_coupons') ? 'active' : '' ?>"><a href="{{ URL::route('new_coupons') }}">New Coupons<span class="sr-only">(current)</span></a></li>
 			    <li class="<?= Request::url() == URL::route('about_to_expire') ? 'active' : '' ?>"><a href="{{ URL::route('about_to_expire') }}">About to expire</a></li>
-			<!--     @if (Auth::check())
-
-			    @endif -->
-
-
-
+	
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
 			      <ul class="dropdown-menu" role="menu">
@@ -58,6 +53,10 @@
 			  	<!-- change the above to if(Auth::user()->type == 'Professional') -->
 			  		<li><a href="{{ URL::route('coupons.create') }}">Post a coupon <span class="glyphicon glyphicon-tags"></span></a></li>
 			  	@endif
+			  	@if (Auth::user()->type == 'Admin')
+			  	<!-- change the above to if(Auth::user()->type == 'Professional') -->
+			  		<li><a href="/admin">Administration <span class="glyphicon glyphicon-cog"></span></a></li>
+			  	@endif
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->username }} <span class="caret"></span></a>
 			      <ul class="dropdown-menu" role="menu">
@@ -67,7 +66,7 @@
 			        </li>
 			      </ul>
 			  @else
-			    <li><a href="{{ URL::route('users.create') }}">Sing up !</a></li>
+			    <li><a href="{{ URL::route('users.create') }}">Sign up !</a></li>
 			    <li><a href="{{ URL::route('sessions.create') }}">Log in !</a></li>
 			  @endif
 			    </div><!-- /.navbar-collapse -->
@@ -75,6 +74,7 @@
 		</nav>
 
 		@yield('content')
+		
 </div>
 
 	</body>

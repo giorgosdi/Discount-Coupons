@@ -29,7 +29,7 @@ class CouponsController extends \BaseController {
 
 
 
-		$data = Coupon::whereBetween('created_at', $date)->paginate(1);
+		$data = Coupon::whereBetween('created_at', $date)->paginate(12);
 
 
 		return View::make('coupons.new_coupons')->with('data', $data);
@@ -38,9 +38,9 @@ class CouponsController extends \BaseController {
 	public function about_to_expire()
 	{
 		$today = new DateTime('today');
-		$zero = 0;
+		// $zero = 0;
 
-		$data = Coupon::where('expiration_date', '=', $today)->where('availability', '>', $zero)->paginate(1);
+		$data = Coupon::where('expiration_date', '=', $today)->paginate(12);
 
 		return View::make('coupons.about_to_expire')->with('data', $data);
 	}
@@ -93,9 +93,6 @@ class CouponsController extends \BaseController {
 	{
 		$destinationPath='';
 		$filename='';
-	// 	$file = Input::file('image');
-	// 	$upload = $file->move($destinationPath, $filename);
-
 		$user_id = Input::get('user_id');
 		$category = Input::get('category');
 		$input = Input::all();
@@ -145,6 +142,28 @@ class CouponsController extends \BaseController {
 	 */
 	public function show()
 	{
+		// $id = Input::get('id');
+		// $user_id = Input::get('user_id');
+		// $cpn = Coupon::find($id);
+
+		$cpn = Input::get('cpn');
+		$cpn_hash = Input::get('cpn_hash');
+
+		// $cpn->availability = $cpn->availability - 1;
+		// $cpn->save();
+
+		// $cpn_hash = $string = str_random(10);
+
+		// $cpn->users()->attach($user_id, ['hash' => $cpn_hash]);
+
+
+
+		return View::make('coupons.ready_to_print')->with('cpn',$cpn)->with('cpn_hash', $cpn_hash);
+
+	}
+
+	public function buy_confirmation()
+	{
 		$id = Input::get('id');
 		$user_id = Input::get('user_id');
 		$cpn = Coupon::find($id);
@@ -155,12 +174,11 @@ class CouponsController extends \BaseController {
 
 		$cpn_hash = $string = str_random(10);
 
-		$cpn->users()->attach($user_id, ['hash' => $cpn_hash]);
+		$cpn->users()->attach($user_id, ['hash' => $cpn_hash]);		
 
-
-
-		return View::make('coupons.ready_to_print')->with('cpn',$cpn)->with('cpn_hash', $cpn_hash);
-
+		// redirect ...id, user_id , controll -> CouponController, action =>  show
+		// return Redirect::action('CouponsController@show', array('cpn' => $cpn));
+		return View::make('coupons.ready_to_print')->with('cpn', $cpn)->with('cpn_hash', $cpn_hash);
 	}
 
 
