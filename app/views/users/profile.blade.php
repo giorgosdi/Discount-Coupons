@@ -19,10 +19,6 @@
   			<td>{{Auth::user()->username}}</td>
   		</tr>
   		<tr>
-  			<td>password</td>
-  			<td>{{Auth::user()->password}}</td>
-  		</tr>
-  		<tr>
   			<td>First Name</td>
   			<td>{{ Auth::user()->first_name }}</td>
   		</tr>
@@ -90,7 +86,7 @@
     </div> 
 </div>
 <!-- coupons details end -->
-@if(Auth::user()->type == 0)
+@if(Auth::user()->type == 'Customer')
   <div class="panel panel-info">
     <div class="panel-heading">Saved money</div>
     <div class="panel-body">

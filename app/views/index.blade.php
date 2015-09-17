@@ -38,7 +38,7 @@
 				    </div>
 		        <div class="col-sm-12">
 			        @if (Auth::check())
-			        	@if (Auth::user()->type == 0)
+			        	@if (Auth::user()->type == 'Customer')
 			        		<!-- <p><a href="{{ URL::route('print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-default" role="button">Print coupon {{ HTML::image('img/png/glyphicons-209-cart-out.png', 'alt-text',array('class'=>'img-rounded')) }}</a></p> -->
 			        		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<?= $coupon->id ?>">Buy Coupon  {{ HTML::image('img/png/glyphicons-209-cart-out.png', 'alt-text',array('class'=>'img-rounded')) }}</button>
 
@@ -48,7 +48,7 @@
 									    <div class="modal-content">
 									      <div class="modal-header">
 									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+									        <h4 class="modal-title" id="myModalLabel">{{ $coupon->title }}</h4>
 									      </div>
 									      <div class="modal-body">
 										      <div class="row">
@@ -64,7 +64,7 @@
 										     </div>
 									      </div>
 									      <div class="modal-footer">
-									        <a href="{{ URL::route('ready_to_print', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Confirm</a>
+									        <a href="{{ URL::route('buy_confirmation', array('id'=>$coupon->id, 'user_id' => Auth::user()->id )) }}" class="btn btn-info">Confirm</a>
 
 									      </div>
 									    </div>
@@ -82,4 +82,7 @@
 	</div>
 	@endforeach
 {{$data->links()}}
+<script type="text/javascript">
+	$(".alert").fadeOut(3000);
+</script>
 @stop

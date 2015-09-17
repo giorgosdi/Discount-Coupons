@@ -57,7 +57,7 @@ class CategoriesController extends \BaseController {
 		$id = Input::get('id'); // we take the id sent from the default.blade.php in the categories dropdown
 
 
-		$data = Category::find($id)->coupons()->where('availability', '>', $zero)->where('expiration_date', '>', $yesterday)->paginate(10);
+		$data = Category::find($id)->coupons()->where('availability', '>', $zero)->where('expiration_date', '>', $yesterday)->paginate(12);
 		$pagination = $data->appends(array('id' => $id));
 
 		return View::make('categories.show')->with('data',$data)->with('pagination', $pagination);
